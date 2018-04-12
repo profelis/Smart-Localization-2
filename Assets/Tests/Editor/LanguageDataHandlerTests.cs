@@ -101,55 +101,66 @@ public class LanguageDataHandlerTests
 	}
 	
 	[Test]
-	[ExpectedException(typeof(AssetSuccessfullyLoadedException))] //Maybe not the best way to test - but it is indeed a way ;)
 	public void GetAudio_Success()
 	{
-		var languageDataHandler = GetLanguageDataHandler();
-		((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
-		Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.AUDIO)));
-		languageDataHandler.GetAsset<AudioClip>("TestKey");		
+		//Maybe not the best way to test - but it is indeed a way ;)
+		Assert.Throws<AssetSuccessfullyLoadedException>(delegate
+		{
+			var languageDataHandler = GetLanguageDataHandler();
+			((MockLocalizedAssetLoader) languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
+			Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.AUDIO)));
+			languageDataHandler.GetAsset<AudioClip>("TestKey");
+		});
 	}
 	
 	[Test]
-	[ExpectedException(typeof(AssetSuccessfullyLoadedException))]
 	public void GetFont_Success()
 	{
-		var languageDataHandler = GetLanguageDataHandler();
-		((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
-		Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.FONT)));
-		languageDataHandler.GetAsset<Font>("TestKey");		
+		Assert.Throws<AssetSuccessfullyLoadedException>(delegate
+		{
+			var languageDataHandler = GetLanguageDataHandler();
+			((MockLocalizedAssetLoader) languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
+			Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.FONT)));
+			languageDataHandler.GetAsset<Font>("TestKey");
+		});
 	}
-	
+
 	[Test]
-	[ExpectedException(typeof(AssetSuccessfullyLoadedException))]
 	public void GetGameObject_Success()
 	{
-		var languageDataHandler = GetLanguageDataHandler();
-		((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
-		Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.GAME_OBJECT)));
-		languageDataHandler.GetAsset<GameObject>("TestKey");		
+		Assert.Throws<AssetSuccessfullyLoadedException>(delegate
+		{
+			var languageDataHandler = GetLanguageDataHandler();
+			((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
+			Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.GAME_OBJECT)));
+			languageDataHandler.GetAsset<GameObject>("TestKey");
+		});
 	}
 	
 	[Test]
-	[ExpectedException(typeof(AssetSuccessfullyLoadedException))]
 	public void GetTextAsset_Success()
 	{
-		var languageDataHandler = GetLanguageDataHandler();
-		((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
-		Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.TEXT_ASSET)));
-		languageDataHandler.GetAsset<TextAsset>("TestKey");		
+		Assert.Throws<AssetSuccessfullyLoadedException>(delegate
+		{
+			var languageDataHandler = GetLanguageDataHandler();
+			((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
+			Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.TEXT_ASSET)));
+			languageDataHandler.GetAsset<TextAsset>("TestKey");
+		});
 	}
-	
+
 	[Test]
-	[ExpectedException(typeof(AssetSuccessfullyLoadedException))]
 	public void GetTexture_Success()
 	{
-		var languageDataHandler = GetLanguageDataHandler();
-		((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
-		Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.TEXTURE)));
-		languageDataHandler.GetAsset<Texture>("TestKey");		
+		Assert.Throws<AssetSuccessfullyLoadedException>(delegate
+		{
+			var languageDataHandler = GetLanguageDataHandler();
+			((MockLocalizedAssetLoader)languageDataHandler.AssetLoader).TestScenario = MockLocalizedAssetLoader.Scenario.ThrowSuccessfullyLoadedExceptions;
+			Assert.IsTrue(languageDataHandler.Load(GetTestData("TestKey", "TestValue", LocalizedObjectType.TEXTURE)));
+			languageDataHandler.GetAsset<Texture>("TestKey");
+		});
 	}
-	
+
 	[Test]
 	public void GetAudio_KeyNotExist()
 	{

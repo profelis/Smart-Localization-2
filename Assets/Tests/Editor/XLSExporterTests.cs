@@ -15,45 +15,55 @@ public class XLSExporterTests
 	};
 
 	[Test]
-	[ExpectedException(typeof(ArgumentNullException))]
 	public void CreateWorkbookFromDictWithNullSheetName_ExpectedException()
 	{
-		XLSExporter.CreateWorkbookFromDictionary(null, testData);
+		Assert.Throws<ArgumentNullException>(delegate
+		{
+			XLSExporter.CreateWorkbookFromDictionary(null, testData);
+		});
 	}
 
 	[Test]
-	[ExpectedException(typeof(ArgumentNullException))]
 	public void CreateWorkbookFromDictWithNullData_ExpectedException()
 	{
-		XLSExporter.CreateWorkbookFromDictionary("MySheet", null);
+		Assert.Throws<ArgumentNullException>(delegate
+		{
+			XLSExporter.CreateWorkbookFromDictionary("MySheet", null);
+		});
 	}
 
 	[Test]
-	[ExpectedException(typeof(ArgumentNullException))]
 	public void CreateWorkbookFromMultipleDictsWithNullSheetName_ExpectedException()
 	{
-		var dictionaries = new Dictionary<string, Dictionary<string, string>>();
-		dictionaries.Add("en", testData);
-		XLSExporter.CreateWorkbookFromMultipleDictionaries(null, new List<string>(), dictionaries);
+		Assert.Throws<ArgumentNullException>(delegate
+		{
+			var dictionaries = new Dictionary<string, Dictionary<string, string>>();
+			dictionaries.Add("en", testData);
+			XLSExporter.CreateWorkbookFromMultipleDictionaries(null, new List<string>(), dictionaries);
+		});
 	}
 
 	[Test]
-	[ExpectedException(typeof(ArgumentNullException))]
 	public void CreateWorkbookFromMultipleDictsWithNullKeys_ExpectedException()
 	{
-		var dictionaries = new Dictionary<string, Dictionary<string, string>>();
-		dictionaries.Add("en", testData);
-		XLSExporter.CreateWorkbookFromMultipleDictionaries("MySheet", null, dictionaries);
+		Assert.Throws<ArgumentNullException>(delegate
+		{
+			var dictionaries = new Dictionary<string, Dictionary<string, string>>();
+			dictionaries.Add("en", testData);
+			XLSExporter.CreateWorkbookFromMultipleDictionaries("MySheet", null, dictionaries);
+		});
 	}
 
 	[Test]
-	[ExpectedException(typeof(ArgumentNullException))]
 	public void CreateWorkbookFromMultipleDictsWithNullValues_ExpectedException()
 	{
-		XLSExporter.CreateWorkbookFromMultipleDictionaries("MySheet", new List<string>(), null);
+		Assert.Throws<ArgumentNullException>(delegate
+		{
+			XLSExporter.CreateWorkbookFromMultipleDictionaries("MySheet", new List<string>(), null);
+		});
 	}
 
-	[Test]	
+	[Test]
 	public void CreateWorkbookFromDict()
 	{
 		var workbook = XLSExporter.CreateWorkbookFromDictionary("MySheet", testData);

@@ -1,4 +1,7 @@
 ﻿
+using UnityEngine;
+using UnityEngine.TestTools;
+
 namespace SmartLocalization.Editor
 {
 	using NUnit.Framework;
@@ -19,6 +22,7 @@ namespace SmartLocalization.Editor
 		public void AddCultureToCollection_Failure()
 		{
 			SmartCultureInfoCollection testCollection = new SmartCultureInfoCollection();
+			LogAssert.Expect(LogType.Error, "Cannot add a SmartCultureInfo that's null!");
 			testCollection.AddCultureInfo(null);
 			
 			Assert.AreEqual(0, testCollection.cultureInfos.Count);

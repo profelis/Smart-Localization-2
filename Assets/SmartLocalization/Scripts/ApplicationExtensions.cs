@@ -103,7 +103,7 @@ internal static class ApplicationExtensions
 				return "Unknown";
 			case SystemLanguage.Vietnamese:
 				return "Vietnamese";
-#if UNITY_5
+#if UNITY_5 || UNITY_5_3_OR_NEWER
 			case SystemLanguage.ChineseSimplified:
 				return "ChineseSimplified";
 			case SystemLanguage.ChineseTraditional:

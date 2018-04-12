@@ -144,17 +144,22 @@ namespace SmartLocalization.Editor{
 		}
 		
 		[Test]
-		[ExpectedException(typeof(System.ArgumentException))]
 		public void TestCSVReadEmptyContent_ArgumentException()
 		{
-			CSVParser.ReadFromString(null, CSVParser.GetDelimiter(CSVParser.Delimiter.COMMA));
+			Assert.Throws<System.ArgumentException>(delegate
+			{
+				CSVParser.ReadFromString(null, CSVParser.GetDelimiter(CSVParser.Delimiter.COMMA));
+			});
+
 		}
 		
 		[Test]
-		[ExpectedException(typeof(System.IO.FileNotFoundException))]
 		public void TestCSVRead_FileNotFoundException()
 		{
-			CSVParser.Read(string.Empty, CSVParser.GetDelimiter(CSVParser.Delimiter.COMMA));
+			Assert.Throws<System.IO.FileNotFoundException>(delegate
+			{
+				CSVParser.Read(string.Empty, CSVParser.GetDelimiter(CSVParser.Delimiter.COMMA));
+			});
 		}
 	}
 }
